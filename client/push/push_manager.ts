@@ -38,6 +38,30 @@ export default class PushManager {
 
   async register(key: string): Promise<boolean> {
     // Not implemented yet
+
+    if (!this.isRegistered) {
+      return false;
+    }
+    
+    navigator.serviceWorker.ready.then((registeration:ServiceWorkerRegistration) => {
+      if (!registeration.pushManager) {
+        console.log("The browser dosen\'t support push notification.");
+        return false;
+      }
+
+      registeration.pushManager.subscribe({
+        userVisibleOnly: true
+      })
+      .then((subscription: PushSubscription) => {
+        
+      })
+      .catch((error: Error) => {
+        
+        return false;
+      })
+
+      return false;
+    })
     return false;
   }
 
