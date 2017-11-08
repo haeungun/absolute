@@ -67,6 +67,34 @@ export default class PushManager {
 
   async unregister(): Promise<boolean> {
     // Not implemented yet
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register('/push_service_worker.js')
+      .then((registration: ServiceWorkerRegistration) => {
+
+        registration.pushManager.getSubscription()
+        .then((subscription: PushSubscription) => {
+          if (!subscription) {
+            // Unable to unregister push
+            return false;
+          }
+
+          subscription.unsubscribe()
+          .then(() => {
+            // Unsubscribed successfully
+            return true;
+          })
+          .catch((error: Error) => {
+             // Not implemented yet
+          })
+
+          return false;
+        })
+        .catch((error: Error) => {
+           // Not implemented yet
+        })
+      })
+    }
+
     return false;
   }
 }
