@@ -20,3 +20,7 @@ const self_ = self as ServiceWorkerGlobalScope;
 self_.addEventListener('install', (event: ExtendableEvent) => {
   event.waitUntil(self_.skipWaiting());
 });
+
+self_.addEventListener('push', (event: PushEvent) => {
+  // Not implemented yet
+})

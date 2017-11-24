@@ -29,3 +29,7 @@ test('absolute.push.register()', async() => {
 test('absolute.push.unregister()', async() => {
   expect(await absolute.push.unregister()).toBe(false);
 });
+
+test('absolute.push.push()', async() => {
+  expect(await absolute.push.push()).toBe(false);
+})

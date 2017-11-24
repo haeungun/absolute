@@ -109,4 +109,9 @@ export default class PushManager {
 
     return false;
   }
+
+  async push(): Promise<boolean> {
+    // Not implemented yet
+    return false;
+  }
 }
